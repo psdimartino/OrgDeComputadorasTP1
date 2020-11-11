@@ -67,15 +67,14 @@ int main(int argc, char *argv[]) {
                 return EXIT_FAILURE;
         }
     }
-    if ( (m = atoi(argv[argc-2]) ) > UINT_MAX ) {
-        printf("%u\n", aux);
+    if ( (m = atoi(argv[argc-2]) ) == UINT_MAX ) {
+        printf("Error: Out of range. Use smaller numbers.\n");
         return EXIT_FAILURE;
     }
-    if ( (n = atoi(argv[argc-2]) ) > UINT_MAX ) {
-        printf("%u\n", aux);
+    if ( (n = atoi(argv[argc-1]) ) == UINT_MAX ) {
+        printf("Error: Out of range. Use smaller numbers.\n");
         return EXIT_FAILURE;
     }
-    fprintf(stderr, "m: %u - n: %u\n", m, n);
     if ( divisor ) {
         aux = mcd(m, n);
         printf("%u\n", aux);
