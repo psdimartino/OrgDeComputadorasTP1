@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <getopt.h>
+#include <errno.h>
 #include <limits.h>
 #include "common.h"
 
@@ -67,13 +68,11 @@ int main(int argc, char *argv[]) {
                 return EXIT_FAILURE;
         }
     }
-    if ( (m = atoi(argv[argc-2]) ) == UINT_MAX ) {
+    m = atoi(argv[argc-2]);
+    n = atoi(argv[argc-1]);
+    if ( errno == ERANGE ) {
         printf("Error: Out of range. Use smaller numbers.\n");
-        return EXIT_FAILURE;
-    }
-    if ( (n = atoi(argv[argc-1]) ) == UINT_MAX ) {
-        printf("Error: Out of range. Use smaller numbers.\n");
-        return EXIT_FAILURE;
+        return 1;
     }
     if ( divisor ) {
         aux = mcd(m, n);
