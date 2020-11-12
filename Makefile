@@ -7,6 +7,9 @@ CSTD = c99
 build:
 	@$(CC) tp1.c common.c -o common
 
+asm:
+	@$(CC) tp1.c -S common.c
+
 clean: 
 	@rm -f *.o common
 
